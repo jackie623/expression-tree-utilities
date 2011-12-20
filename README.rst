@@ -1,12 +1,17 @@
-# expression-tree-utils
+.. expression-tree-utils
+
+ExpressionTree Utilities
+========================
 
 Provides utilities for working with predicate ExpressionTrees.
 
-## Usage
+Usage
+-----
 
 TODO: write
 
-## License
+License
+-------
 
 Copyright (C) 2011 Physion Consulting LLC
 All rights reserved.
