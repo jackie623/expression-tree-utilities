@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e5627dd-32ea-41a4-ac36-ea0dbe1529c3" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/com/physion/ovation/expression_tree/utils/test/GeneratePQLTest.java" afterPath="$PROJECT_DIR$/GeneratePQLTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GeneratePQLTest.java" afterPath="$PROJECT_DIR$/GeneratePQLTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.rst" afterPath="$PROJECT_DIR$/README.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/physion/ovation/expression_tree/utils/core.clj" afterPath="$PROJECT_DIR$/src/com/physion/ovation/expression_tree/utils/core.clj" />
     </list>
     <ignored path="expression-tree-utils.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,10 +65,19 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="core.clj" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="core.clj" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/com/physion/ovation/expression_tree/utils/test/core.clj">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="87" column="41" selection-start="3240" selection-end="3240" vertical-scroll-proportion="0.5473934">
+                <state line="81" column="41" selection-start="2955" selection-end="2955" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="README.rst" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/README.rst">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="14" column="50" selection-start="277" selection-end="277" vertical-scroll-proportion="0.2310231">
                   <folding />
                 </state>
               </provider>
@@ -80,7 +90,7 @@
           <file leaf-file-name="core.clj" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/physion/ovation/expression_tree/utils/core.clj">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="38" selection-start="474" selection-end="474" vertical-scroll-proportion="0.0">
+                <state line="4" column="163" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0660066">
                   <folding />
                 </state>
               </provider>
@@ -117,9 +127,10 @@
         <option value="$PROJECT_DIR$/src/expression_tree_utils/core.clj" />
         <option value="$PROJECT_DIR$/project.clj" />
         <option value="$PROJECT_DIR$/test/com/physion/ovation/expression_tree/utils/test/core.clj" />
-        <option value="$PROJECT_DIR$/src/com/physion/ovation/expression_tree/utils/core.clj" />
         <option value="$PROJECT_DIR$/test/com/physion/ovation/expression_tree/utils/test/GeneratePQLTest.java" />
         <option value="$PROJECT_DIR$/GeneratePQLTest.java" />
+        <option value="$PROJECT_DIR$/README.rst" />
+        <option value="$PROJECT_DIR$/src/com/physion/ovation/expression_tree/utils/core.clj" />
       </list>
     </option>
   </component>
@@ -311,6 +322,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="expression-tree-utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="expression-tree-utilities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -592,12 +617,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2480" height="1418" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32948422" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.100328945" sideWeight="0.6705158" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948422" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Leiningen" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.100328945" sideWeight="0.730562" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3487298" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -608,8 +633,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1377467" sideWeight="0.26943803" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1377467" sideWeight="0.6705158" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26943803" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1377467" sideWeight="0.730562" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26943803" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -683,13 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/physion/ovation/expression_tree/utils/test/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="41" selection-start="3240" selection-end="3240" vertical-scroll-proportion="0.5473934">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GeneratePQLTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -699,9 +717,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/physion/ovation/expression_tree/utils/test/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="41" selection-start="2955" selection-end="2955" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="50" selection-start="277" selection-end="277" vertical-scroll-proportion="0.2310231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/clojure-1.3.0.jar!/clojure/lang/Util.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="0" selection-start="2715" selection-end="2715" vertical-scroll-proportion="0.9264706">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/physion/ovation/expression_tree/utils/core.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="38" selection-start="474" selection-end="474" vertical-scroll-proportion="0.0">
+        <state line="4" column="163" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0660066">
           <folding />
         </state>
       </provider>

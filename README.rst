@@ -12,7 +12,7 @@ From Java::
 
     import com.physion.ovation.expression_tree.utils.core;
 
-    IExpression expression = core.EditExpression();
+    IExpression expression = core.ExpressionEditor();
 
     core.generatePQL(expression);
 
