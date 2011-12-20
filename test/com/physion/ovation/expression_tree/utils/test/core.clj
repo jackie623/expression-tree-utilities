@@ -1,5 +1,5 @@
-(ns expression-tree-utils.test.core
-  (:use [expression-tree-utils.core])
+(ns com.physion.ovation.expression_tree.utils.test.core
+  (:use [com.physion.ovation.expression_tree.utils.core])
   (:use [lazytest.describe]))
 
 (import (java.util
@@ -12,7 +12,8 @@
           Float64LiteralValueExpression
           StringLiteralValueExpression
           ClassLiteralValueExpression
-          TimeLiteralValueExpression))
+          TimeLiteralValueExpression
+          AttributeExpression))
 
 
 (describe expression-pql
@@ -66,5 +67,10 @@
                 "AM"
                 "PM")
               ))
+      ))
+
+  (it "Generates attribute expressions"
+    (let [attributeName "my_attribute"]
+      (= (generate-pql (AttributeExpression. attributeName)) attributeName)
       ))
   )

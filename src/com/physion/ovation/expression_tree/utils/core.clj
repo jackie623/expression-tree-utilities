@@ -1,4 +1,4 @@
-(ns expression-tree-utils.core)
+(ns com.physion.ovation.expression_tree.utils.core)
 
 (import (com.physion.ovation.gui.ebuilder.expression
           IBooleanLiteralValueExpression
@@ -7,7 +7,8 @@
           IStringLiteralValueExpression
           IClassLiteralValueExpression
           ITimeLiteralValueExpression
-          ILiteralValueExpression))
+          ILiteralValueExpression
+          IAttributeExpression))
 (import (java.util
           Calendar
           GregorianCalendar))
@@ -69,6 +70,10 @@
 ;; ILiteralValueExpression
 (defmethod expression-pql ILiteralValueExpression [expression]
   (value-expression-pql expression))
+
+;; IAttributeExpression
+(defmethod expression-pql IAttributeExpression [expression]
+  (.getAttributeName expression))
 
 
 ;;; Core PQL generation
