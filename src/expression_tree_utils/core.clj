@@ -40,24 +40,26 @@
 ;; TimeLiteralValueExpression
 (defmethod value-expression-pql ITimeLiteralValueExpression [expression]
   (let [calendarDate (GregorianCalendar. )]
-    (str (+ 1 (.get calendarDate Calendar/MONTH))
-      "/"
-      (.get calendarDate Calendar/DAY_OF_MONTH)
-      "/"
-      (.get calendarDate Calendar/YEAR)
-      " "
-      (.get calendarDate Calendar/HOUR_OF_DAY)
-      ":"
-      (.get calendarDate Calendar/MINUTE)
-      ":"
-      (.get calendarDate Calendar/SECOND)
-      ":"
-      (.get calendarDate Calendar/MILLISECOND)
-      " "
-      (if (= (.get calendarDate Calendar/AM_PM) Calendar/AM)
-        "AM"
-        "PM")
-      )))
+    (do
+      (.setTime calendarDate (.getValue expression))
+      (str (+ 1 (.get calendarDate Calendar/MONTH))
+        "/"
+        (.get calendarDate Calendar/DAY_OF_MONTH)
+        "/"
+        (.get calendarDate Calendar/YEAR)
+        " "
+        (.get calendarDate Calendar/HOUR_OF_DAY)
+        ":"
+        (.get calendarDate Calendar/MINUTE)
+        ":"
+        (.get calendarDate Calendar/SECOND)
+        ":"
+        (.get calendarDate Calendar/MILLISECOND)
+        " "
+        (if (= (.get calendarDate Calendar/AM_PM) Calendar/AM)
+          "AM"
+          "PM")
+        ))))
 
 
 

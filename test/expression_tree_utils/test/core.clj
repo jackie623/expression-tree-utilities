@@ -16,11 +16,11 @@
 
 
 (describe expression-pql
-  (it "enerates boolean literal value expressions"
+  (it "Generates boolean literal value expressions"
       (= (generate-pql (BooleanLiteralValueExpression. true)) "true")
       (= (generate-pql (BooleanLiteralValueExpression. false)) "false"))
 
-    (it "generates integer literal value expressions"
+    (it "Generates integer literal value expressions"
       (= (generate-pql (Int32LiteralValueExpression. -1)) (str -1))
       (= (generate-pql (Int32LiteralValueExpression. 0)) (str 0))
       (= (generate-pql (Int32LiteralValueExpression. 1)) (str 1))
@@ -29,23 +29,23 @@
         #(= (generate-pql (Int32LiteralValueExpression. %)) (str %))))
 
 
-  (it "generates floating point literal value expressions"
+  (it "Generates floating point literal value expressions"
     (= (generate-pql (Float64LiteralValueExpression. 0)) (str 0.0))
     (= (generate-pql (Float64LiteralValueExpression. Math/PI)) (str Math/PI))
     (= (generate-pql (Float64LiteralValueExpression. (* -1 Math/PI))) (str (* -1 Math/PI)))
     )
 
-  (it "generates string literal value expressions"
+  (it "Generates string literal value expressions"
     (= (generate-pql (StringLiteralValueExpression. "")) "")
     )
 
-  (it "generates class literal value expressions"
+  (it "Generates class literal value expressions"
     (= (generate-pql (ClassLiteralValueExpression. "ovation.Epoch")) "class:ovation.Epoch")
     (= (generate-pql (ClassLiteralValueExpression. "Foo")) "class:Foo")
     (= (generate-pql (ClassLiteralValueExpression. "")) "class:")
     )
 
-  (it "generates time literal value expressions"
+  (it "Generates time literal value expressions"
     (let [calendarDate (GregorianCalendar. 1979 1 23 1 23 45)]
       (= (generate-pql (TimeLiteralValueExpression. (.getTime calendarDate)))
             (str (+ 1 (.get calendarDate Calendar/MONTH))
