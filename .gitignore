@@ -1,4 +1,5 @@
 /pom.xml
+.idea/workspace.xml
 *jar
 *.class
 /lib
