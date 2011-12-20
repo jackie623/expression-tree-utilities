@@ -7,7 +7,9 @@
           IStringLiteralValueExpression
           IClassLiteralValueExpression
           ITimeLiteralValueExpression
-          ILiteralValueExpression))
+          ILiteralValueExpression
+          IAttributeExpression
+          IOperatorExpression))
 (import (java.util
           Calendar
           GregorianCalendar))
@@ -69,6 +71,14 @@
 ;; ILiteralValueExpression
 (defmethod expression-pql ILiteralValueExpression [expression]
   (value-expression-pql expression))
+
+;; IAttributeExpression
+(defmethod expression-pql IAttributeExpression [expression]
+  (.getAttributeName expression))
+
+;; IOperatorExpression
+(defmethod expression-pql IOperatorExpression [expression]
+  (str (.getOperatorName expression) "()"))
 
 
 ;;; Core PQL generation
