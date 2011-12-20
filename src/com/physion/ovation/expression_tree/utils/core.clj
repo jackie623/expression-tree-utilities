@@ -80,7 +80,7 @@
 ;; IOperatorExpression
 (defmethod expression-pql IOperatorExpression [expression]
   (let [numOperands (.size (.getOperandList expression))]
-    (str (.getOperatorName expression) "("
+    (str (.toUpperCase (.getOperatorName expression)) "("
       (if (> numOperands 0)
         ;;Create a string interposing "," between the string pql for each operand expression
         (apply str (interpose "," (map expression-pql (.getOperandList expression))))

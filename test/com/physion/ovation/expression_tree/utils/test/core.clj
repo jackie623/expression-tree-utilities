@@ -80,8 +80,8 @@
   (testing "Generates operator expressions"
     (testing "with 0 operands"
       (it "Generates pql with 0 operands"
-        (let [operatorName "MY_OPERATOR"]
-          (= (generate-pql (OperatorExpression. operatorName (ArrayList.))) (str operatorName "()"))
+        (let [operatorName "my_operator"]
+          (= (generate-pql (OperatorExpression. operatorName (ArrayList.))) (str (.toUpperCase operatorName) "()"))
           )))
     (testing "with 1 operand"
       (it "Generates pql with 1 operand"
