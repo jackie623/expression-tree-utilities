@@ -1,8 +1,7 @@
 (ns com.physion.ovation.expression_tree.utils.core
   (:gen-class
     :main false
-    :methods [#^{:static true} [generatePQL [com.physion.ovation.gui.ebuilder.expression.IExpression] String]
-              #^{:static true} [EditExpressionTree [com.physion.ovation.gui.ebuilder.expression.ExpressionTree] com.physion.ovation.gui.ebuilder.ExpressionBuilder$ReturnValue]]
+    :methods [ #^{:static true} [generatePQL [com.physion.ovation.gui.ebuilder.expression.IExpression] String]]
     ))
 
 (import (com.physion.ovation.gui.ebuilder.expression
@@ -107,12 +106,4 @@
 (defn -generatePQL [expression]
   (generate-pql expression))
 
-;;; ExpressionEditor entry
-(defn expression-editor-ui [expressionTree]
-  (. ExpressionBuilder editExpression expressionTree)
-  )
-
-;;; Java-interop for expression-editor-ui
-(defn -EditExpressionTree [expression]
-  (expression-editor-ui expression))
 

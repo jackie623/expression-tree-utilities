@@ -11,7 +11,7 @@ public class GeneratePQLTest {
 
         java.lang.Thread.currentThread().setContextClassLoader(GeneratePQLTest.class.getClassLoader()); 
         
-        ExpressionBuilder.ReturnValue rv = core.EditExpressionTree(null);
+        ExpressionBuilder.ReturnValue rv = ExpressionBuilder.editExpression(null);
         ExpressionTree tree = rv.expressionTree;
         System.out.println(core.generatePQL(
             tree.getRootExpression()
