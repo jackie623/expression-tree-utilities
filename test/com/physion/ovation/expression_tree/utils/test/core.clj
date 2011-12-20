@@ -115,7 +115,7 @@
           (let [op1 (Float64LiteralValueExpression. Math/PI)
                 op2 (StringLiteralValueExpression. "some-string")
                 op3 (Int32LiteralValueExpression. 10)
-                opList (ArrayList.)]
+                opList (new ArrayList)]
             (.add opList op1)
             (.add opList op2)
             (.add opList op3)

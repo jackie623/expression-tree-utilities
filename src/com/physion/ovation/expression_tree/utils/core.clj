@@ -1,6 +1,11 @@
-(ns com.physion.ovation.expression_tree.utils.core)
+(ns com.physion.ovation.expression_tree.utils.core
+  (:gen-class
+    :main false
+    :methods [#^{:static true} [generatePQL [com.physion.ovation.gui.ebuilder.expression.IExpression] String]]
+    ))
 
 (import (com.physion.ovation.gui.ebuilder.expression
+          IExpression
           IBooleanLiteralValueExpression
           IInt32LiteralValueExpression
           IFloat64LiteralValueExpression
@@ -93,3 +98,7 @@
   "Generate PQL from an IExpression"
 
   (expression-pql expression))
+
+;;; Java-interop for generate-pql
+(defn -generatePQL [expression]
+  (generate-pql expression))
