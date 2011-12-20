@@ -1,3 +1,5 @@
+package com.physion.ovation.expression_tree.utils.test;
+
 import com.physion.ovation.expression_tree.utils.core;
 import com.physion.ovation.gui.ebuilder.expression.*;
 
@@ -9,7 +11,7 @@ public class GeneratePQLTest {
         ArrayList<IExpression> operands = new ArrayList<IExpression>();
         operands.add(new Int32LiteralValueExpression(10));
         operands.add(new TimeLiteralValueExpression(new java.util.Date()));
-        
+
         System.out.println(core.generatePQL(
             new OperatorExpression("AND", operands)
         ));
