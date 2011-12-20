@@ -79,7 +79,6 @@
 
 ;; IOperatorExpression
 (defmethod expression-pql IOperatorExpression [expression]
-  ;; TODO: this should use loop/recur
   (let [numOperands (.size (.getOperandList expression))]
     (str (.getOperatorName expression) "("
       (if (> numOperands 0)

@@ -96,19 +96,41 @@
     (testing "with 2 opearnds"
       (it "Generates pql with 2 operands"
         (let [operatorName "MY_OPERATOR"]
+          (let [op1 (Float64LiteralValueExpression. Math/PI)
+                op2 (StringLiteralValueExpression. "some-string")
+                opList (ArrayList.)]
+            (.add opList op1)
+            (.add opList op2)
+            (= (generate-pql (OperatorExpression. operatorName opList))
+              (str operatorName "("
+                (generate-pql op1)
+                ","
+                (generate-pql op2)
+                ")"))
+            )
+          )))
+    )
+
+  (testing "with 3 opearnds"
+    (it "Generates pql with 3 operands"
+      (let [operatorName "MY_OPERATOR"]
         (let [op1 (Float64LiteralValueExpression. Math/PI)
               op2 (StringLiteralValueExpression. "some-string")
+              op3 (Int32LiteralValueExpression. 10)
               opList (ArrayList.)]
           (.add opList op1)
           (.add opList op2)
+          (.add opList op3)
           (= (generate-pql (OperatorExpression. operatorName opList))
             (str operatorName "("
               (generate-pql op1)
               ","
               (generate-pql op2)
+              ","
+              (generate-pql op3)
               ")"))
           )
-        )))
-    )
-
+        ))
   )
+
+)
