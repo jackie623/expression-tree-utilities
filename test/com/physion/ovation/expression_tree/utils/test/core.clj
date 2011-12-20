@@ -5,7 +5,9 @@
 (import (java.util
           GregorianCalendar
           Date
-          Calendar))
+          Calendar
+          ArrayList))
+
 (import (com.physion.ovation.gui.ebuilder.expression
           BooleanLiteralValueExpression
           Int32LiteralValueExpression
@@ -13,21 +15,22 @@
           StringLiteralValueExpression
           ClassLiteralValueExpression
           TimeLiteralValueExpression
-          AttributeExpression))
+          AttributeExpression
+          OperatorExpression))
 
 
 (describe expression-pql
   (it "Generates boolean literal value expressions"
-      (= (generate-pql (BooleanLiteralValueExpression. true)) "true")
-      (= (generate-pql (BooleanLiteralValueExpression. false)) "false"))
+    (= (generate-pql (BooleanLiteralValueExpression. true)) "true")
+    (= (generate-pql (BooleanLiteralValueExpression. false)) "false"))
 
-    (it "Generates integer literal value expressions"
-      (= (generate-pql (Int32LiteralValueExpression. -1)) (str -1))
-      (= (generate-pql (Int32LiteralValueExpression. 0)) (str 0))
-      (= (generate-pql (Int32LiteralValueExpression. 1)) (str 1))
-      (= (generate-pql (Int32LiteralValueExpression. 2)) (str 2))
-      (map (range -10 10 5)
-        #(= (generate-pql (Int32LiteralValueExpression. %)) (str %))))
+  (it "Generates integer literal value expressions"
+    (= (generate-pql (Int32LiteralValueExpression. -1)) (str -1))
+    (= (generate-pql (Int32LiteralValueExpression. 0)) (str 0))
+    (= (generate-pql (Int32LiteralValueExpression. 1)) (str 1))
+    (= (generate-pql (Int32LiteralValueExpression. 2)) (str 2))
+    (map (range -10 10 5)
+      #(= (generate-pql (Int32LiteralValueExpression. %)) (str %))))
 
 
   (it "Generates floating point literal value expressions"
@@ -49,24 +52,34 @@
   (it "Generates time literal value expressions"
     (let [calendarDate (GregorianCalendar. 1979 1 23 1 23 45)]
       (= (generate-pql (TimeLiteralValueExpression. (.getTime calendarDate)))
-            (str (+ 1 (.get calendarDate Calendar/MONTH))
-              "/"
-              (.get calendarDate Calendar/DAY_OF_MONTH)
-              "/"
-              (.get calendarDate Calendar/YEAR)
-              " "
-              (.get calendarDate Calendar/HOUR_OF_DAY)
-              ":"
-              (.get calendarDate Calendar/MINUTE)
-              ":"
-              (.get calendarDate Calendar/SECOND)
-              ":"
-              (.get calendarDate Calendar/MILLISECOND)
-              " "
-              (if (= (.get calendarDate Calendar/AM_PM) Calendar/AM)
-                "AM"
-                "PM")
-              ))
+        (str (+ 1 (.get calendarDate Calendar/MONTH))
+          "/"
+          (.get calendarDate Calendar/DAY_OF_MONTH)
+          "/"
+          (.get calendarDate Calendar/YEAR)
+          " "
+          (.get calendarDate Calendar/HOUR_OF_DAY)
+          ":"
+          (.get calendarDate Calendar/MINUTE)
+          ":"
+          (.get calendarDate Calendar/SECOND)
+          ":"
+          (.get calendarDate Calendar/MILLISECOND)
+          " "
+          (if (= (.get calendarDate Calendar/AM_PM) Calendar/AM)
+            "AM"
+            "PM")
+          ))
+      ))
+
+  (it "Generates Attribute expressions"
+    (let [attrName "some-attribute"]
+      (= (generate-pql (AttributeExpression. attrName)) attrName)
+      ))
+
+  (it "Generates operator expressions"
+    (let [operatorName "MY_OPERATOR"]
+      (= (generate-pql (OperatorExpression. operatorName (ArrayList. ))) (str operatorName "()"))
       ))
 
   (it "Generates attribute expressions"
