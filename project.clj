@@ -4,4 +4,4 @@
                  [com.stuartsierra/lazytest "2.0.0-SNAPSHOT"]]
   :repositories {"stuartsierra-releases" "http://stuartsierra.com/maven2"
                  "stuartsierra-snapshots" "http://stuartsierra.com/m2snapshots"}
-  :aot [expression-tree-utils.core])
+  :aot [com.physion.ovation.expression_tree.utils.core])

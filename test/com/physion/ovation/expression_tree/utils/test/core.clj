@@ -77,13 +77,38 @@
       (= (generate-pql (AttributeExpression. attrName)) attrName)
       ))
 
-  (it "Generates operator expressions"
-    (let [operatorName "MY_OPERATOR"]
-      (= (generate-pql (OperatorExpression. operatorName (ArrayList. ))) (str operatorName "()"))
-      ))
+  (testing "Generates operator expressions"
+    (testing "with 0 operands"
+      (it "Generates pql with 0 operands"
+        (let [operatorName "MY_OPERATOR"]
+          (= (generate-pql (OperatorExpression. operatorName (ArrayList.))) (str operatorName "()"))
+          )))
+    (testing "with 1 operand"
+      (it "Generates pql with 1 operand"
+        (let [operatorName "MY_OPERATOR"]
+          (let [op1 (Float64LiteralValueExpression. Math/PI)
+                opList (ArrayList.)]
+            (.add opList op1)
+            (= (generate-pql (OperatorExpression. operatorName opList))
+              (str operatorName "(" (generate-pql op1) ")"))
+            )
+          )))
+    (testing "with 2 opearnds"
+      (it "Generates pql with 2 operands"
+        (let [operatorName "MY_OPERATOR"]
+        (let [op1 (Float64LiteralValueExpression. Math/PI)
+              op2 (StringLiteralValueExpression. "some-string")
+              opList (ArrayList.)]
+          (.add opList op1)
+          (.add opList op2)
+          (= (generate-pql (OperatorExpression. operatorName opList))
+            (str operatorName "("
+              (generate-pql op1)
+              ","
+              (generate-pql op2)
+              ")"))
+          )
+        )))
+    )
 
-  (it "Generates attribute expressions"
-    (let [attributeName "my_attribute"]
-      (= (generate-pql (AttributeExpression. attributeName)) attributeName)
-      ))
   )

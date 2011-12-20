@@ -38,11 +38,11 @@
 
 ;; ClassLiteralValueExpression
 (defmethod value-expression-pql IClassLiteralValueExpression [expression]
- (str "class:" (.getValue expression)))
+  (str "class:" (.getValue expression)))
 
 ;; TimeLiteralValueExpression
 (defmethod value-expression-pql ITimeLiteralValueExpression [expression]
-  (let [calendarDate (GregorianCalendar. )]
+  (let [calendarDate (GregorianCalendar.)]
     (do
       (.setTime calendarDate (.getValue expression))
       (str (+ 1 (.get calendarDate Calendar/MONTH))
@@ -79,7 +79,15 @@
 
 ;; IOperatorExpression
 (defmethod expression-pql IOperatorExpression [expression]
-  (str (.getOperatorName expression) "()"))
+  ;; TODO: this should use loop/recur
+  (let [numOperands (.size (.getOperandList expression))]
+    (str (.getOperatorName expression) "("
+      (if (> numOperands 0)
+        ;;Create a string interposing "," between the string pql for each operand expression
+        (apply str (interpose "," (map expression-pql (.getOperandList expression))))
+        "")
+      ")"))
+  )
 
 ;;; Core PQL generation
 (defn generate-pql [expression]
