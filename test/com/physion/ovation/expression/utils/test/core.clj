@@ -1,4 +1,4 @@
-(ns com.physion.ovation.expression_tree.utils.test.core
+(ns com.physion.ovation.expression.utils.test.core
   (:use [com.physion.ovation.expression_tree.utils.core])
   (:use [lazytest.describe]))
 
@@ -8,7 +8,7 @@
           Calendar
           ArrayList))
 
-(import (com.physion.ovation.gui.ebuilder.expression
+(import (com.physion.ebuilder.expression
           BooleanLiteralValueExpression
           Int32LiteralValueExpression
           Float64LiteralValueExpression

@@ -1,10 +1,9 @@
-(ns com.physion.ovation.expression_tree.utils.core
-  (:gen-class
-    :main false
-    :methods [ #^{:static true} [generatePQL [com.physion.ovation.gui.ebuilder.expression.IExpression] String]]
-    ))
+(ns com.physion.ovation.expression.utils.core
+  (:gen-class :main false
+              :methods [#^{:static true} [generatePQL [com.physion.ebuilder.expression.IExpression] String]]
+              ))
 
-(import (com.physion.ovation.gui.ebuilder.expression
+(import (com.physion.ebuilder.expression
           IExpression
           IBooleanLiteralValueExpression
           IInt32LiteralValueExpression
@@ -15,8 +14,6 @@
           ILiteralValueExpression
           IAttributeExpression
           IOperatorExpression))
-
-(import com.physion.ovation.gui.ebuilder.ExpressionBuilder)
 
 (import (java.util
           Calendar
