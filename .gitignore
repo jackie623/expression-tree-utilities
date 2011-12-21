@@ -1,5 +1,7 @@
 /pom.xml
+.idea/workspace.xml
 *jar
+*.class
 /lib
 /classes
 /native

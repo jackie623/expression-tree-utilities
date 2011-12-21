@@ -1,6 +1,11 @@
-(ns expression-tree-utils.core)
+(ns com.physion.ovation.expression_tree.utils.core
+  (:gen-class
+    :main false
+    :methods [ #^{:static true} [generatePQL [com.physion.ovation.gui.ebuilder.expression.IExpression] String]]
+    ))
 
 (import (com.physion.ovation.gui.ebuilder.expression
+          IExpression
           IBooleanLiteralValueExpression
           IInt32LiteralValueExpression
           IFloat64LiteralValueExpression
@@ -10,6 +15,9 @@
           ILiteralValueExpression
           IAttributeExpression
           IOperatorExpression))
+
+(import com.physion.ovation.gui.ebuilder.ExpressionBuilder)
+
 (import (java.util
           Calendar
           GregorianCalendar))
@@ -37,11 +45,11 @@
 
 ;; ClassLiteralValueExpression
 (defmethod value-expression-pql IClassLiteralValueExpression [expression]
- (str "class:" (.getValue expression)))
+  (str "class:" (.getValue expression)))
 
 ;; TimeLiteralValueExpression
 (defmethod value-expression-pql ITimeLiteralValueExpression [expression]
-  (let [calendarDate (GregorianCalendar. )]
+  (let [calendarDate (GregorianCalendar.)]
     (do
       (.setTime calendarDate (.getValue expression))
       (str (+ 1 (.get calendarDate Calendar/MONTH))
@@ -78,11 +86,24 @@
 
 ;; IOperatorExpression
 (defmethod expression-pql IOperatorExpression [expression]
-  (str (.getOperatorName expression) "()"))
-
+  (let [numOperands (.size (.getOperandList expression))]
+    (str (.toUpperCase (.getOperatorName expression)) "("
+      (if (> numOperands 0)
+        ;;Create a string interposing "," between the string pql for each operand expression
+        (apply str (interpose "," (map expression-pql (.getOperandList expression))))
+        "")
+      ")"))
+  )
 
 ;;; Core PQL generation
 (defn generate-pql [expression]
   "Generate PQL from an IExpression"
 
   (expression-pql expression))
+
+
+;;; Java-interop for generate-pql
+(defn -generatePQL [expression]
+  (generate-pql expression))
+
+

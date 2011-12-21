@@ -8,7 +8,14 @@ Provides utilities for working with predicate ExpressionTrees.
 Usage
 -----
 
-TODO: write
+From Java::
+
+    import com.physion.ovation.expression_tree.utils.core;
+
+    IExpression expression = core.ExpressionEditor();
+
+    core.generatePQL(expression);
+
 
 License
 -------
