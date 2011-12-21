@@ -10,11 +10,9 @@ Usage
 
 From Java::
 
-    import com.physion.ovation.expression_tree.utils.core;
+    import com.physion.ovation.expression.utils.core;
 
-    IExpression expression = core.ExpressionEditor();
-
-    core.generatePQL(expression);
+    core.generatePQL(^IExpression expression);
 
 
 License

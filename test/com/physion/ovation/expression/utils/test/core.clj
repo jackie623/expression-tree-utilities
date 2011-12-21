@@ -1,5 +1,5 @@
 (ns com.physion.ovation.expression.utils.test.core
-  (:use [com.physion.ovation.expression_tree.utils.core])
+  (:use [com.physion.ovation.expression.utils.core])
   (:use [lazytest.describe]))
 
 (import (java.util
