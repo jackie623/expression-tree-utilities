@@ -90,7 +90,7 @@
           "AM"
           "PM")
         ))
-    )
+  )
 
   (it "Generates Attribute expressions"
     (let [attrName "some-attribute"]
