@@ -41,7 +41,7 @@
     )
 
   (it "Generates string literal value expressions"
-    (= (generate-pql (StringLiteralValueExpression. "")) "")
+    (= (generate-pql (StringLiteralValueExpression. "foo")) "\"foo\"")
     )
 
   (it "Generates class literal value expressions"

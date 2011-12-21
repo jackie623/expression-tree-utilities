@@ -38,7 +38,7 @@
 
 ;; StringLiteralValueExpression
 (defmethod value-expression-pql IStringLiteralValueExpression [expression]
-  (.getValue expression))
+  (str "\"" (.getValue expression) "\""))
 
 ;; ClassLiteralValueExpression
 (defmethod value-expression-pql IClassLiteralValueExpression [expression]
