@@ -1,6 +1,7 @@
 (ns com.physion.ovation.expression.utils.test.core
   (:use [com.physion.ovation.expression.utils.core])
-  (:use [lazytest.describe]))
+  (:use [lazytest.describe])
+  (:use [lazytest.expect]))
 
 (import (java.util
           GregorianCalendar
@@ -50,27 +51,46 @@
     )
 
   (it "Generates time literal value expressions"
-    (let [calendarDate (GregorianCalendar. 1979 1 23 1 23 45)]
-      (= (generate-pql (TimeLiteralValueExpression. (.getTime calendarDate)))
-        (str (+ 1 (.get calendarDate Calendar/MONTH))
-          "/"
-          (.get calendarDate Calendar/DAY_OF_MONTH)
-          "/"
-          (.get calendarDate Calendar/YEAR)
-          " "
-          (.get calendarDate Calendar/HOUR_OF_DAY)
-          ":"
-          (.get calendarDate Calendar/MINUTE)
-          ":"
-          (.get calendarDate Calendar/SECOND)
-          ":"
-          (.get calendarDate Calendar/MILLISECOND)
-          " "
-          (if (= (.get calendarDate Calendar/AM_PM) Calendar/AM)
-            "AM"
-            "PM")
-          ))
-      ))
+    (= (generate-pql (TimeLiteralValueExpression. (.getTime (GregorianCalendar. 1979 1 23 1 23 45))))
+      (str (+ 1 (.get (GregorianCalendar. 1979 1 23 1 23 45) Calendar/MONTH))
+        "/"
+        (.get (GregorianCalendar. 1979 1 23 1 23 45) Calendar/DAY_OF_MONTH)
+        "/"
+        (.get (GregorianCalendar. 1979 1 23 1 23 45) Calendar/YEAR)
+        " "
+        (.get (GregorianCalendar. 1979 1 23 1 23 45) Calendar/HOUR_OF_DAY)
+        ":"
+        (.get (GregorianCalendar. 1979 1 23 1 23 45) Calendar/MINUTE)
+        ":"
+        (.get (GregorianCalendar. 1979 1 23 1 23 45) Calendar/SECOND)
+        ":"
+        (.get (GregorianCalendar. 1979 1 23 1 23 45) Calendar/MILLISECOND)
+        " "
+        (if (= (.get (GregorianCalendar. 1979 1 23 1 23 45) Calendar/AM_PM) Calendar/AM)
+          "AM"
+          "PM")
+        ))
+
+    (= (generate-pql (TimeLiteralValueExpression. (.getTime (GregorianCalendar. 1979 1 23 14 23 45))))
+      (str (+ 1 (.get (GregorianCalendar. 1979 1 23 14 23 45) Calendar/MONTH))
+        "/"
+        (.get (GregorianCalendar. 1979 1 23 14 23 45) Calendar/DAY_OF_MONTH)
+        "/"
+        (.get (GregorianCalendar. 1979 1 23 14 23 45) Calendar/YEAR)
+        " "
+        (.get (GregorianCalendar. 1979 1 23 14 23 45) Calendar/HOUR_OF_DAY)
+        ":"
+        (.get (GregorianCalendar. 1979 1 23 14 23 45) Calendar/MINUTE)
+        ":"
+        (.get (GregorianCalendar. 1979 1 23 14 23 45) Calendar/SECOND)
+        ":"
+        (.get (GregorianCalendar. 1979 1 23 14 23 45) Calendar/MILLISECOND)
+        " "
+        (if (= (.get (GregorianCalendar. 1979 1 23 14 23 45) Calendar/AM_PM) Calendar/AM)
+          "AM"
+          "PM")
+        ))
+    )
 
   (it "Generates Attribute expressions"
     (let [attrName "some-attribute"]
