@@ -90,7 +90,7 @@
           "AM"
           "PM")
         ))
-  )
+    )
 
   (it "Generates Attribute expressions"
     (let [attrName "some-attribute"]
@@ -150,6 +150,55 @@
             )
           ))
       )
-    )
 
+    (testing "Converting comparison operators to functional form"
+      (it "converts *"
+        (= (generate-pql (OperatorExpression. "*" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "MULTIPLY(10,10)"))
+
+      (it "converts /"
+        (= (generate-pql (OperatorExpression. "/" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "DIVIDE(10,10)"))
+
+      (it "converts %"
+        (= (generate-pql (OperatorExpression. "%" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "MODULO(10,10)"))
+
+      (it "coverts binary +"
+        (= (generate-pql (OperatorExpression. "+" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "PLUS(10,10)"))
+
+      (it "does not convert unary +"
+        (= (generate-pql (OperatorExpression. "+" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10))))) "+10"))
+
+      (it "coverts binary -"
+        (= (generate-pql (OperatorExpression. "-" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "MINUS(10,10)"))
+
+      (it "does not convert unary -"
+        (= (generate-pql (OperatorExpression. "-" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10))))) "-10"))
+
+      (it "converts <"
+        (= (generate-pql (OperatorExpression. "<" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "LT(10,10)"))
+
+      (it "converts <="
+        (= (generate-pql (OperatorExpression. "<=" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "LE(10,10)"))
+
+      (it "converts >"
+        (= (generate-pql (OperatorExpression. ">" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "GT(10,10)"))
+
+      (it "converts >="
+        (= (generate-pql (OperatorExpression. ">=" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "GE(10,10)"))
+
+
+
+      (it "converts =="
+        (= (generate-pql (OperatorExpression. "==" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "EQ(10,10)"))
+
+      (it "converts ="
+        (= (generate-pql (OperatorExpression. "=" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "EQ(10,10)"))
+
+      (it "converts !="
+        (= (generate-pql (OperatorExpression. "!=" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "NE(10,10)"))
+
+      (it "converts <>"
+        (= (generate-pql (OperatorExpression. "<>" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "NE(10,10)"))
+
+      )
+    )
   )

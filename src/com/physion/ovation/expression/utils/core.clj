@@ -80,14 +80,37 @@
   (.getAttributeName expression))
 
 ;; IOperatorExpression
+(def ^{:private true} operator-name-map {"*" "MULTIPLY",
+                                         "/" "DIVIDE",
+                                         "%" "MODULO",
+                                         "+" "PLUS",
+                                         "-" "MINUS",
+                                         "<" "LT",
+                                         "<=" "LE",
+                                         ">" "GT",
+                                         ">=" "GE",
+                                         "==" "EQ",
+                                         "=" "EQ",
+                                         "!=" "NE",
+                                         "<>" "NE"})
+(def ^{:private true} operator-allows-unary #{"+" "-"})
+
 (defmethod expression-pql IOperatorExpression [expression]
-  (let [numOperands (.size (.getOperandList expression))]
-    (str (.toUpperCase (.getOperatorName expression)) "("
+  (let [numOperands (.size (.getOperandList expression))
+        ; If operator name is a comparison operator, convert it to functional form, else use the operator name.
+        ; We don't apply this transformation for unary operators
+        operatorName (if (> (.size (.getOperandList expression)) 1) (get operator-name-map (.getOperatorName expression) (.getOperatorName expression)) (.getOperatorName expression))
+
+        ; Handle open/close parens for unary operators +/-
+        openBrace (if (and (== (.size (.getOperandList expression)) 1) (contains? operator-allows-unary (.getOperatorName expression))) "" "(" )
+        closeBrace (if (and (== (.size (.getOperandList expression)) 1) (contains? operator-allows-unary (.getOperatorName expression))) "" ")" )
+        ]
+    (str (.toUpperCase operatorName) openBrace
       (if (> numOperands 0)
         ;;Create a string interposing "," between the string pql for each operand expression
         (apply str (interpose "," (map expression-pql (.getOperandList expression))))
         "")
-      ")"))
+      closeBrace))
   )
 
 ;;; Core PQL generation
