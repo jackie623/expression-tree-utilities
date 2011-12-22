@@ -1,7 +1,8 @@
 (ns com.physion.ovation.expression.utils.test.core
   (:use [com.physion.ovation.expression.utils.core])
   (:use [lazytest.describe])
-  (:use [lazytest.expect]))
+  (:use [lazytest.expect])
+  (:require [lazytest.color]))
 
 (import (java.util
           GregorianCalendar
@@ -19,6 +20,8 @@
           AttributeExpression
           OperatorExpression))
 
+; For IntelliJ... skip colorization
+(lazytest.color/set-colorize false)
 
 (describe expression-pql
   (it "Generates boolean literal value expressions"
