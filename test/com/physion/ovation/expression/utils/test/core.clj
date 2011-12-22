@@ -154,7 +154,7 @@
           ))
       )
 
-    (testing "Converting comparison operators to functional form"
+    (testing "converting comparison operators to functional form"
       (it "converts *"
         (= (generate-pql (OperatorExpression. "*" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "MULTIPLY(10,10)"))
 
@@ -202,6 +202,18 @@
       (it "converts <>"
         (= (generate-pql (OperatorExpression. "<>" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "NE(10,10)"))
 
+      )
+    (testing "hoisting singleton conjunctions"
+      (it "does not hoist AND(foo,bar) => AND(foo,barr)"
+        (= (generate-pql (OperatorExpression. "AND" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "AND(10,10)"))
+
+      (it "hoists AND(ex) => ex"
+        (= (generate-pql (OperatorExpression. "AND" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10))))) "10"))
+
+      (it "does not hoist OR(foo,bar) => OR(foo,bar)"
+        (= (generate-pql (OperatorExpression. "AND" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10)) (.add (Int32LiteralValueExpression. 10))))) "AND(10,10)"))
+      (it "hoists OR(ex) => or"
+        (= (generate-pql (OperatorExpression. "AND" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10))))) "10"))
       )
     )
   )

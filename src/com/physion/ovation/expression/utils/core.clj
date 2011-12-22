@@ -94,6 +94,7 @@
                                          "!=" "NE",
                                          "<>" "NE"})
 (def ^{:private true} operator-allows-unary #{"+" "-"})
+(def ^{:private true} operator-hoists-singleton-operands #{"AND", "OR"})
 
 (defmethod expression-pql IOperatorExpression [expression]
   (let [numOperands (.size (.getOperandList expression))
@@ -102,15 +103,24 @@
         operatorName (if (> (.size (.getOperandList expression)) 1) (get operator-name-map (.getOperatorName expression) (.getOperatorName expression)) (.getOperatorName expression))
 
         ; Handle open/close parens for unary operators +/-
-        openBrace (if (and (== (.size (.getOperandList expression)) 1) (contains? operator-allows-unary (.getOperatorName expression))) "" "(" )
-        closeBrace (if (and (== (.size (.getOperandList expression)) 1) (contains? operator-allows-unary (.getOperatorName expression))) "" ")" )
+        openBrace (if (and (== numOperands 1) (contains? operator-allows-unary (.getOperatorName expression))) "" "(")
+        closeBrace (if (and (== numOperands 1) (contains? operator-allows-unary (.getOperatorName expression))) "" ")")
         ]
-    (str (.toUpperCase operatorName) openBrace
-      (if (> numOperands 0)
-        ;;Create a string interposing "," between the string pql for each operand expression
-        (apply str (interpose "," (map expression-pql (.getOperandList expression))))
-        "")
-      closeBrace))
+
+    (if (and
+          (contains? operator-hoists-singleton-operands (.toUpperCase operatorName))
+          (== numOperands 1))
+
+      ;; Hoist singleton operand
+      (expression-pql (.get (.getOperandList expression) 0))
+
+      ;; Normal op(..operands..)
+      (str (.toUpperCase operatorName) openBrace
+        (if (> numOperands 0)
+          ;;Create a string interposing "," between the string pql for each operand expression
+          (apply str (interpose "," (map expression-pql (.getOperandList expression))))
+          "")
+        closeBrace)))
   )
 
 ;;; Core PQL generation
