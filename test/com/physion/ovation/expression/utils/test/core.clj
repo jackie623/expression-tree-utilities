@@ -103,9 +103,8 @@
   (testing "Generates operator expressions"
     (testing "with 0 operands"
       (it "Generates pql with 0 operands"
-        (let [operatorName "my_operator"]
-          (= (generate-pql (OperatorExpression. operatorName (ArrayList.))) (str (.toUpperCase operatorName) "()"))
-          )))
+        (= (generate-pql (OperatorExpression. "my_operator" (ArrayList.))) (str (.toUpperCase "my_operator") "()"))
+        ))
     (testing "with 1 operand"
       (it "Generates pql with 1 operand"
         (let [operatorName "MY_OPERATOR"]
@@ -215,5 +214,9 @@
       (it "hoists OR(ex) => or"
         (= (generate-pql (OperatorExpression. "AND" (doto (new ArrayList) (.add (Int32LiteralValueExpression. 10))))) "10"))
       )
+
+    (it "infixes the attribute access (.) operator"
+      (= (generate-pql (OperatorExpression. "." (doto (new ArrayList) (.add (AttributeExpression. "foo")) (.add (AttributeExpression. "bar"))))) "foo.bar"))
     )
+
   )

@@ -95,6 +95,7 @@
                                          "<>" "NE"})
 (def ^{:private true} operator-allows-unary #{"+" "-"})
 (def ^{:private true} operator-hoists-singleton-operands #{"AND", "OR"})
+(def ^{:private true} operator-requires-infix #{"."})
 
 (defmethod expression-pql IOperatorExpression [expression]
   (let [numOperands (.size (.getOperandList expression))
@@ -115,12 +116,15 @@
       (expression-pql (.get (.getOperandList expression) 0))
 
       ;; Normal op(..operands..)
-      (str (.toUpperCase operatorName) openBrace
-        (if (> numOperands 0)
-          ;;Create a string interposing "," between the string pql for each operand expression
-          (apply str (interpose "," (map expression-pql (.getOperandList expression))))
-          "")
-        closeBrace)))
+      (if (contains? operator-requires-infix operatorName)
+        (apply str (interpose operatorName (map expression-pql (.getOperandList expression))))
+        (str (.toUpperCase operatorName) openBrace
+          (if (> numOperands 0)
+            ;;Create a string interposing "," between the string pql for each operand expression
+            (apply str (interpose "," (map expression-pql (.getOperandList expression))))
+            "")
+          closeBrace)))
+    )
   )
 
 ;;; Core PQL generation
